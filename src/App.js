@@ -18,12 +18,35 @@ let titleStyle = {
   fontSize: '54px',
   color: 'white'
 }
+let fakeServerData = {
+  user: {
+    name: 'Jay',
+    playlists: [
+      {
+        name: 'My favorites',
+        songs: ['Beat It', 'Sweet Caroline', 'Bad']
+      },
+      {
+        name: 'Discover WEekly',
+        songs: ['Le song', 'The Song', 'Song']
+      },
+      {
+        name: 'Another playlist - the best!',
+        songs: ['Le song', 'The Song', 'Song']
+      },
+      {
+        name: 'Playlis - yeah!',
+        songs: ['Le song', 'The Song', 'Song']
+      },
+    ]
+  }
+}
 
 class Aggregate extends Component {
   render() {
     return(
       <div style={aggregateStyle}>
-        <h2>Number Text</h2>
+        <h2>{this.props.playlists && this.props.playlists.length} Text</h2>
       </div>
     );
   }
@@ -61,17 +84,33 @@ class Playlist extends Component {
 }
 
 class App extends Component {
+  constructor() {
+    super();
+      this.state = {serverData: {}}
+  }
+  componentDidMount() {
+    setTimeout(() => {
+    this.setState({serverData: fakeServerData});
+  }, 1000);
+}
   render() {
     return (
       <div className="App">
-        <h1 style={titleStyle}>Title</h1>
-        <Aggregate />
-        <Aggregate />
-        <Filter />
-        <Playlist />
-        <Playlist />
-        <Playlist />
-        <Playlist />
+      {this.state.serverData.user && 
+        <div>      
+          <h1 style={titleStyle}>
+            {this.state.serverData.user.name}'s Playlists
+          </h1>
+            <Aggregate playlists={this.state.serverData.user.playlists}/>
+            <Aggregate />
+    
+          <Filter />
+          <Playlist />
+          <Playlist />
+          <Playlist />
+          <Playlist />
+        </div>
+      }
       </div>
     );
   }
