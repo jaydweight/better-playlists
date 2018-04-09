@@ -18,6 +18,9 @@ let titleStyle = {
   fontSize: '54px',
   color: 'white'
 }
+let ulStyle = {
+  textAlign: 'left'
+}
 let fakeServerData = {
   user: {
     name: 'Jay',
@@ -105,7 +108,7 @@ class Playlist extends Component {
       <div style={playlistStyle}>
         <img />
         <h3>{playlist.name}</h3>
-        <ul>
+        <ul style={ulStyle}>
           {this.props.playlist.songs.map(song =>
             <li>{song.name}</li>
           )}
