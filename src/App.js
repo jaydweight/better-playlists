@@ -140,7 +140,7 @@ class App extends Component {
           <Playlist />
           <Playlist />
           <Playlist />
-        </div> : <h1 style={whiteTextColor}>'Loading...'</h1>
+        </div> : <h1 style={whiteTextColor}>Loading...</h1>
       }
       </div>
     );
