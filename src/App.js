@@ -92,7 +92,7 @@ class Filter extends Component {
     return(
       <div>
         <img />
-        <input type="text" onKeyUp={event => 
+        <input type="text" placeholder="Filter Playlists" onKeyUp={event => 
           this.props.onChange(event.target.value)}/>
       </div>
     );
