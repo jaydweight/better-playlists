@@ -14,6 +14,10 @@ let playlistStyle = {
   color: 'white',
   width: '25%'
 }
+let titleStyle = {
+  fontSize: '54px',
+  color: 'white'
+}
 
 class Aggregate extends Component {
   render() {
@@ -60,7 +64,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Title</h1>
+        <h1 style={titleStyle}>Title</h1>
         <Aggregate />
         <Aggregate />
         <Filter />
