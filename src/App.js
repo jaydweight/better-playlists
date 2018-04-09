@@ -36,25 +36,25 @@ let fakeServerData = {
       {
         name: 'Discover Weekly',
         songs: [
-          {name: 'Halleluja', duration: 1345}, 
-          {name: 'Sweet Caroline', duration: 1234},
+          {name: 'Halleluja', duration: 432}, 
+          {name: 'Sweet Caroline', duration: 2342},
           {name: 'Hey', duration: 2342}
         ]
       },
       {
         name: 'Another playlist - the best!',
         songs: [
-          {name: 'What', duration: 1345}, 
-          {name: 'Sweet Caroline', duration: 1234},
+          {name: 'What', duration: 134}, 
+          {name: 'Sweet Caroline', duration: 345},
           {name: 'Bad', duration: 2342}
         ]
       },
       {
         name: 'Playlist - yeah!',
         songs: [
-          {name: 'Beat It', duration: 1345}, 
-          {name: 'Sweet Caroline', duration: 1234},
-          {name: 'Bad', duration: 2342}
+          {name: 'Beat It', duration: 234}, 
+          {name: 'Sweet Caroline', duration: 34},
+          {name: 'Bad', duration: 34}
         ]
       },
     ]
@@ -130,6 +130,11 @@ class App extends Component {
   }, 1000);
 }
   render() {
+    let playlistToRender = this.state.serverData.user ? this.state.serverData.user.playlists
+      .filter(playlist =>
+        playlist.name.toLowerCase().includes(
+          this.state.filterString.toLowerCase())
+    ) : []
     return (
       <div className="App">
       {this.state.serverData.user ? 
@@ -137,10 +142,10 @@ class App extends Component {
           <h1 style={titleStyle}>
             {this.state.serverData.user.name}'s Playlists
           </h1>
-          <PlaylistCounter playlists={this.state.serverData.user.playlists}/>
-          <HoursCounter playlists={this.state.serverData.user.playlists}/>
+          <PlaylistCounter playlists={playlistToRender}/>
+          <HoursCounter playlists={playlistToRender}/>
           <Filter onChange={text => this.setState({filterString: text})} />
-          {this.state.serverData.user.playlists.filter(playlist =>
+          {playlistToRender.filter(playlist =>
             playlist.name.toLowerCase().includes(
               this.state.filterString.toLowerCase())
           ).map(playlist => 
