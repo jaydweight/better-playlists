@@ -33,15 +33,15 @@ let fakeServerData = {
       {
         name: 'Discover WEekly',
         songs: [
-          {name: 'Beat It', duration: 1345}, 
+          {name: 'Halleluja', duration: 1345}, 
           {name: 'Sweet Caroline', duration: 1234},
-          {name: 'Bad', duration: 2342}
+          {name: 'Hey', duration: 2342}
         ]
       },
       {
         name: 'Another playlist - the best!',
         songs: [
-          {name: 'Beat It', duration: 1345}, 
+          {name: 'What?', duration: 1345}, 
           {name: 'Sweet Caroline', duration: 1234},
           {name: 'Bad', duration: 2342}
         ]
@@ -100,14 +100,15 @@ class Filter extends Component {
 
 class Playlist extends Component {
   render() {
+    let playlist = this.props.playlist
     return(
       <div style={playlistStyle}>
         <img />
-        <h3>Playlist Name</h3>
+        <h3>{playlist.name}</h3>
         <ul>
-          <li>Song 1</li>
-          <li>Song 2</li>
-          <li>Song 3</li>
+          {this.props.playlist.songs.map(song =>
+            <li>{song.name}</li>
+          )}
         </ul>
       </div>
     );
@@ -134,12 +135,10 @@ class App extends Component {
           </h1>
           <PlaylistCounter playlists={this.state.serverData.user.playlists}/>
           <HoursCounter playlists={this.state.serverData.user.playlists}/>
-    
           <Filter />
-          <Playlist />
-          <Playlist />
-          <Playlist />
-          <Playlist />
+          {this.state.serverData.user.playlists.map(playlist => 
+            <Playlist playlist={playlist} />          
+          )}
         </div> : <h1 style={whiteTextColor}>Loading...</h1>
       }
       </div>
