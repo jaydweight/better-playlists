@@ -47,7 +47,7 @@ let fakeServerData = {
         ]
       },
       {
-        name: 'Playlis - yeah!',
+        name: 'Playlist - yeah!',
         songs: [
           {name: 'Beat It', duration: 1345}, 
           {name: 'Sweet Caroline', duration: 1234},
@@ -93,7 +93,6 @@ class Filter extends Component {
           type="text"
           placeholder="Filter"
         />
-        
       </div>
     );
   }
