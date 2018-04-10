@@ -107,7 +107,7 @@ class Playlist extends Component {
         <img />
         <h3>{playlist.name}</h3>
         <ul style={ulStyle}>
-          {this.props.playlist.songs.map(song =>
+          {playlist.songs.map(song =>
             <li>{song.name}</li>
           )}
         </ul>
