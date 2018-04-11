@@ -144,11 +144,10 @@ class App extends Component {
           </h1>
           <PlaylistCounter playlists={playlistToRender}/>
           <HoursCounter playlists={playlistToRender}/>
-          <Filter onChange={text => this.setState({filterString: text})} />
-          {playlistToRender.filter(playlist =>
-            playlist.name.toLowerCase().includes(
-              this.state.filterString.toLowerCase())
-          ).map(playlist => 
+          <Filter onChange={text => {
+              this.setState({filterString: text})
+            }} />
+          {playlistToRender.map(playlist => 
             <Playlist playlist={playlist} />          
           )}
         </div> : <h1 style={whiteTextColor}>Loading...</h1>
